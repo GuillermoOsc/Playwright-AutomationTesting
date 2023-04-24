@@ -27,6 +27,14 @@ test('test mercado libre', async ({ page }) => {
 
   await expect(page.locator('//ol[contains(@class, \'ui-search-layout\')]')).toBeVisible()
 
-  await page.pause()
+  //await page.pause()
+
+  const titles = await page.locator('//ol[contains(@class, \'ui-search-layout\')]//li//h2').allInnerTexts()
+
+  console.log('Resultado total de elementos:', titles.length)
+
+  for (let title of titles) {
+    console.log('The title is: ', title)
+  }
 
 });
