@@ -16,3 +16,17 @@ test('get started link', async ({ page }) => {
   // Expects the URL to contain intro.
   await expect(page).toHaveURL(/.*intro/);
 });
+
+test('test mercado libre', async ({ page }) => {
+
+  await page.goto('https://www.mercadolibre.com.ar')
+
+  await page.locator('input[id=\'cb1-edit\']').fill('Iphone')
+
+  await page.keyboard.press('Enter')
+
+  await expect(page.locator('//ol[contains(@class, \'ui-search-layout\')]')).toBeVisible()
+
+  await page.pause()
+
+});
